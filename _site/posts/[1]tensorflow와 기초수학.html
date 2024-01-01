@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto_2 - 위의 딥러닝이 무슨 의미인가요?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">quarto_2</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><strong>위의 딥러닝이 무슨 의미인가요?</strong></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. tensorflow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install tensorflow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/MP2023/main/posts/employment.csv'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_train</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.get_dummies(df_train[[<span class="st">'toeic'</span>,<span class="st">'gpa'</span>]])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> df_train[[<span class="st">'employment'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#모델 설정과 딥러닝 구조 결정정</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">30</span>, input_dim<span class="op">=</span><span class="dv">2</span> , activation<span class="op">=</span><span class="st">'relu'</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>model.add(Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#딥러닝 실행</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mean_squared_error'</span>,optimizer<span class="op">=</span><span class="st">'adam'</span>,metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>model.fit(X,Y, epochs<span class="op">=</span><span class="dv">100</span>,batch_size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/100
+50/50 [==============================] - 0s 784us/step - loss: 0.4801 - accuracy: 0.5020
+Epoch 2/100
+50/50 [==============================] - 0s 758us/step - loss: 0.4109 - accuracy: 0.4860
+Epoch 3/100
+50/50 [==============================] - 0s 677us/step - loss: 0.4088 - accuracy: 0.4960
+Epoch 4/100
+50/50 [==============================] - 0s 654us/step - loss: 0.3409 - accuracy: 0.5060
+Epoch 5/100
+50/50 [==============================] - 0s 659us/step - loss: 0.3178 - accuracy: 0.5080
+Epoch 6/100
+50/50 [==============================] - 0s 642us/step - loss: 0.2569 - accuracy: 0.5620
+Epoch 7/100
+50/50 [==============================] - 0s 640us/step - loss: 0.3526 - accuracy: 0.5360
+Epoch 8/100
+50/50 [==============================] - 0s 636us/step - loss: 0.2452 - accuracy: 0.6060
+Epoch 9/100
+50/50 [==============================] - 0s 644us/step - loss: 0.2451 - accuracy: 0.6400
+Epoch 10/100
+50/50 [==============================] - 0s 649us/step - loss: 0.2393 - accuracy: 0.6400
+Epoch 11/100
+50/50 [==============================] - 0s 646us/step - loss: 0.2290 - accuracy: 0.6160
+Epoch 12/100
+50/50 [==============================] - 0s 647us/step - loss: 0.2045 - accuracy: 0.6900
+Epoch 13/100
+50/50 [==============================] - 0s 641us/step - loss: 0.2870 - accuracy: 0.5860
+Epoch 14/100
+50/50 [==============================] - 0s 648us/step - loss: 0.2420 - accuracy: 0.6280
+Epoch 15/100
+50/50 [==============================] - 0s 650us/step - loss: 0.1949 - accuracy: 0.6980
+Epoch 16/100
+50/50 [==============================] - 0s 646us/step - loss: 0.2214 - accuracy: 0.6720
+Epoch 17/100
+50/50 [==============================] - 0s 660us/step - loss: 0.1891 - accuracy: 0.6980
+Epoch 18/100
+50/50 [==============================] - 0s 644us/step - loss: 0.1848 - accuracy: 0.7160
+Epoch 19/100
+50/50 [==============================] - 0s 650us/step - loss: 0.1732 - accuracy: 0.7480
+Epoch 20/100
+50/50 [==============================] - 0s 645us/step - loss: 0.1818 - accuracy: 0.7500
+Epoch 21/100
+50/50 [==============================] - 0s 639us/step - loss: 0.1649 - accuracy: 0.7720
+Epoch 22/100
+50/50 [==============================] - 0s 667us/step - loss: 0.2311 - accuracy: 0.6560
+Epoch 23/100
+50/50 [==============================] - 0s 3ms/step - loss: 0.2007 - accuracy: 0.6980
+Epoch 24/100
+50/50 [==============================] - 0s 639us/step - loss: 0.1641 - accuracy: 0.7740
+Epoch 25/100
+50/50 [==============================] - 0s 645us/step - loss: 0.1733 - accuracy: 0.7540
+Epoch 26/100
+50/50 [==============================] - 0s 635us/step - loss: 0.2121 - accuracy: 0.6840
+Epoch 27/100
+50/50 [==============================] - 0s 628us/step - loss: 0.1743 - accuracy: 0.7560
+Epoch 28/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1756 - accuracy: 0.7420
+Epoch 29/100
+50/50 [==============================] - 0s 630us/step - loss: 0.1543 - accuracy: 0.7780
+Epoch 30/100
+50/50 [==============================] - 0s 629us/step - loss: 0.1729 - accuracy: 0.7480
+Epoch 31/100
+50/50 [==============================] - 0s 630us/step - loss: 0.1534 - accuracy: 0.7920
+Epoch 32/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1463 - accuracy: 0.7980
+Epoch 33/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1449 - accuracy: 0.8080
+Epoch 34/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1510 - accuracy: 0.7820
+Epoch 35/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1570 - accuracy: 0.7720
+Epoch 36/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1693 - accuracy: 0.7460
+Epoch 37/100
+50/50 [==============================] - 0s 1ms/step - loss: 0.1387 - accuracy: 0.8180
+Epoch 38/100
+50/50 [==============================] - 0s 901us/step - loss: 0.1467 - accuracy: 0.8060
+Epoch 39/100
+50/50 [==============================] - 0s 668us/step - loss: 0.1436 - accuracy: 0.8080
+Epoch 40/100
+50/50 [==============================] - 0s 643us/step - loss: 0.1456 - accuracy: 0.7880
+Epoch 41/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1572 - accuracy: 0.7820
+Epoch 42/100
+50/50 [==============================] - 0s 635us/step - loss: 0.1452 - accuracy: 0.8160
+Epoch 43/100
+50/50 [==============================] - 0s 639us/step - loss: 0.1531 - accuracy: 0.7780
+Epoch 44/100
+50/50 [==============================] - 0s 636us/step - loss: 0.1415 - accuracy: 0.7900
+Epoch 45/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1354 - accuracy: 0.8060
+Epoch 46/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1475 - accuracy: 0.8040
+Epoch 47/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1565 - accuracy: 0.7740
+Epoch 48/100
+50/50 [==============================] - 0s 640us/step - loss: 0.1434 - accuracy: 0.7740
+Epoch 49/100
+50/50 [==============================] - 0s 638us/step - loss: 0.1508 - accuracy: 0.7780
+Epoch 50/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1261 - accuracy: 0.8220
+Epoch 51/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1425 - accuracy: 0.8040
+Epoch 52/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1384 - accuracy: 0.8060
+Epoch 53/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1468 - accuracy: 0.7780
+Epoch 54/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1266 - accuracy: 0.8460
+Epoch 55/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1369 - accuracy: 0.8000
+Epoch 56/100
+50/50 [==============================] - 0s 645us/step - loss: 0.1579 - accuracy: 0.7660
+Epoch 57/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1339 - accuracy: 0.8040
+Epoch 58/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1218 - accuracy: 0.8380
+Epoch 59/100
+50/50 [==============================] - 0s 637us/step - loss: 0.1296 - accuracy: 0.8140
+Epoch 60/100
+50/50 [==============================] - 0s 630us/step - loss: 0.1272 - accuracy: 0.8180
+Epoch 61/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1368 - accuracy: 0.8100
+Epoch 62/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1740 - accuracy: 0.7380
+Epoch 63/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1358 - accuracy: 0.7960
+Epoch 64/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1435 - accuracy: 0.8040
+Epoch 65/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1355 - accuracy: 0.8120
+Epoch 66/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1203 - accuracy: 0.8380
+Epoch 67/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1309 - accuracy: 0.8200
+Epoch 68/100
+50/50 [==============================] - 0s 635us/step - loss: 0.1150 - accuracy: 0.8460
+Epoch 69/100
+50/50 [==============================] - 0s 635us/step - loss: 0.1319 - accuracy: 0.8220
+Epoch 70/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1205 - accuracy: 0.8360
+Epoch 71/100
+50/50 [==============================] - 0s 636us/step - loss: 0.1137 - accuracy: 0.8420
+Epoch 72/100
+50/50 [==============================] - 0s 648us/step - loss: 0.1192 - accuracy: 0.8360
+Epoch 73/100
+50/50 [==============================] - 0s 646us/step - loss: 0.1353 - accuracy: 0.7980
+Epoch 74/100
+50/50 [==============================] - 0s 651us/step - loss: 0.1263 - accuracy: 0.8100
+Epoch 75/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1095 - accuracy: 0.8540
+Epoch 76/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1151 - accuracy: 0.8380
+Epoch 77/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1124 - accuracy: 0.8520
+Epoch 78/100
+50/50 [==============================] - 0s 636us/step - loss: 0.1135 - accuracy: 0.8540
+Epoch 79/100
+50/50 [==============================] - 0s 646us/step - loss: 0.1450 - accuracy: 0.7900
+Epoch 80/100
+50/50 [==============================] - 0s 656us/step - loss: 0.1222 - accuracy: 0.8240
+Epoch 81/100
+50/50 [==============================] - 0s 644us/step - loss: 0.1174 - accuracy: 0.8320
+Epoch 82/100
+50/50 [==============================] - 0s 645us/step - loss: 0.1544 - accuracy: 0.7740
+Epoch 83/100
+50/50 [==============================] - 0s 655us/step - loss: 0.1224 - accuracy: 0.8360
+Epoch 84/100
+50/50 [==============================] - 0s 684us/step - loss: 0.1495 - accuracy: 0.8020
+Epoch 85/100
+50/50 [==============================] - 0s 644us/step - loss: 0.1197 - accuracy: 0.8400
+Epoch 86/100
+50/50 [==============================] - 0s 655us/step - loss: 0.1442 - accuracy: 0.7800
+Epoch 87/100
+50/50 [==============================] - 0s 644us/step - loss: 0.1242 - accuracy: 0.8240
+Epoch 88/100
+50/50 [==============================] - 0s 640us/step - loss: 0.1278 - accuracy: 0.8220
+Epoch 89/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1658 - accuracy: 0.7580
+Epoch 90/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1258 - accuracy: 0.8280
+Epoch 91/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1195 - accuracy: 0.8340
+Epoch 92/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1360 - accuracy: 0.8040
+Epoch 93/100
+50/50 [==============================] - 0s 633us/step - loss: 0.1151 - accuracy: 0.8340
+Epoch 94/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1277 - accuracy: 0.8100
+Epoch 95/100
+50/50 [==============================] - 0s 638us/step - loss: 0.1264 - accuracy: 0.8240
+Epoch 96/100
+50/50 [==============================] - 0s 673us/step - loss: 0.1080 - accuracy: 0.8600
+Epoch 97/100
+50/50 [==============================] - 0s 632us/step - loss: 0.1020 - accuracy: 0.8560
+Epoch 98/100
+50/50 [==============================] - 0s 631us/step - loss: 0.1100 - accuracy: 0.8440
+Epoch 99/100
+50/50 [==============================] - 0s 629us/step - loss: 0.1109 - accuracy: 0.8440
+Epoch 100/100
+50/50 [==============================] - 0s 634us/step - loss: 0.1040 - accuracy: 0.8580</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>&lt;keras.src.callbacks.History at 0x7f65a416cb50&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>16/16 [==============================] - 0s 651us/step</code></pre>
+</div>
+</div>
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y, yhat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>(     employment
+ 0             0
+ 1             0
+ 2             0
+ 3             0
+ 4             1
+ ..          ...
+ 495           1
+ 496           1
+ 497           0
+ 498           0
+ 499           1
+ 
+ [500 rows x 1 columns],
+ array([[0.01917117],
+        [0.27701277],
+        [0.57248056],
+        [0.07291598],
+        [0.9337903 ],
+        [0.16967887],
+        [0.04423696],
+        [0.16271544],
+        [0.82395774],
+        [0.03679871],
+        [0.49401855],
+        [0.70155656],
+        [0.74422747],
+        [0.07437798],
+        [0.9701731 ],
+        [0.11984617],
+        [0.22355464],
+        [0.9713866 ],
+        [0.84243065],
+        [0.34956658],
+        [0.93221444],
+        [0.79003614],
+        [0.8277889 ],
+        [0.78845423],
+        [0.67572665],
+        [0.91666716],
+        [0.900001  ],
+        [0.4948617 ],
+        [0.08570924],
+        [0.08675035],
+        [0.45085144],
+        [0.09457831],
+        [0.89941543],
+        [0.89091516],
+        [0.98111194],
+        [0.38627425],
+        [0.500065  ],
+        [0.07303426],
+        [0.2076528 ],
+        [0.39872044],
+        [0.14696163],
+        [0.10400353],
+        [0.849859  ],
+        [0.6330585 ],
+        [0.50127107],
+        [0.12333758],
+        [0.8664031 ],
+        [0.27620575],
+        [0.8914864 ],
+        [0.25114718],
+        [0.8564444 ],
+        [0.86841565],
+        [0.90393656],
+        [0.57267356],
+        [0.07932395],
+        [0.06170203],
+        [0.18767741],
+        [0.24924625],
+        [0.95436203],
+        [0.07904566],
+        [0.03398843],
+        [0.38441926],
+        [0.78319013],
+        [0.8257212 ],
+        [0.85713553],
+        [0.3929678 ],
+        [0.12670748],
+        [0.95258856],
+        [0.06235125],
+        [0.310451  ],
+        [0.36083743],
+        [0.32625353],
+        [0.9480908 ],
+        [0.66629976],
+        [0.27613765],
+        [0.24882582],
+        [0.5382514 ],
+        [0.9798404 ],
+        [0.9588324 ],
+        [0.9194008 ],
+        [0.63055253],
+        [0.5876403 ],
+        [0.2970832 ],
+        [0.8484085 ],
+        [0.89806634],
+        [0.40804952],
+        [0.9729422 ],
+        [0.87672734],
+        [0.933373  ],
+        [0.73566663],
+        [0.98569727],
+        [0.7418684 ],
+        [0.90864396],
+        [0.8763635 ],
+        [0.7899342 ],
+        [0.7961238 ],
+        [0.10964687],
+        [0.91110736],
+        [0.05452807],
+        [0.42326584],
+        [0.8430349 ],
+        [0.8250593 ],
+        [0.57293916],
+        [0.17664742],
+        [0.03240925],
+        [0.40322167],
+        [0.7187368 ],
+        [0.40607226],
+        [0.88016856],
+        [0.48957664],
+        [0.98425466],
+        [0.29335815],
+        [0.93182445],
+        [0.09154762],
+        [0.91493297],
+        [0.8811433 ],
+        [0.64865637],
+        [0.03991823],
+        [0.94465333],
+        [0.8167183 ],
+        [0.01954143],
+        [0.05376468],
+        [0.57212585],
+        [0.05252383],
+        [0.9681868 ],
+        [0.96812886],
+        [0.94278234],
+        [0.9837329 ],
+        [0.5691354 ],
+        [0.88369924],
+        [0.11227809],
+        [0.53355527],
+        [0.87268454],
+        [0.35719532],
+        [0.27300215],
+        [0.67220396],
+        [0.97631776],
+        [0.8732753 ],
+        [0.9843648 ],
+        [0.9656994 ],
+        [0.95308733],
+        [0.6931385 ],
+        [0.81876254],
+        [0.96818775],
+        [0.5238588 ],
+        [0.8196187 ],
+        [0.8168527 ],
+        [0.58253735],
+        [0.88458246],
+        [0.83249867],
+        [0.1201875 ],
+        [0.8826075 ],
+        [0.93429315],
+        [0.77423817],
+        [0.02924814],
+        [0.38178807],
+        [0.3466166 ],
+        [0.9653925 ],
+        [0.79927737],
+        [0.22591524],
+        [0.07185473],
+        [0.82701117],
+        [0.05066053],
+        [0.23043263],
+        [0.41072193],
+        [0.92123693],
+        [0.90527797],
+        [0.76721424],
+        [0.6522743 ],
+        [0.34334943],
+        [0.63762605],
+        [0.19859885],
+        [0.97158444],
+        [0.8913412 ],
+        [0.08545599],
+        [0.95702195],
+        [0.9546011 ],
+        [0.7769809 ],
+        [0.6955107 ],
+        [0.959477  ],
+        [0.13949394],
+        [0.88012   ],
+        [0.9681104 ],
+        [0.16866204],
+        [0.81970745],
+        [0.06679367],
+        [0.50428295],
+        [0.97363365],
+        [0.13436674],
+        [0.73526573],
+        [0.3802947 ],
+        [0.3797849 ],
+        [0.92563415],
+        [0.93689096],
+        [0.17957757],
+        [0.14559893],
+        [0.8678163 ],
+        [0.88208693],
+        [0.97858894],
+        [0.6803263 ],
+        [0.88837254],
+        [0.6473557 ],
+        [0.713776  ],
+        [0.98046607],
+        [0.40170547],
+        [0.9541457 ],
+        [0.33725163],
+        [0.07588536],
+        [0.19491214],
+        [0.61104286],
+        [0.14010936],
+        [0.91630405],
+        [0.03834961],
+        [0.72811943],
+        [0.34053385],
+        [0.62020403],
+        [0.07496268],
+        [0.3621057 ],
+        [0.77371186],
+        [0.79291373],
+        [0.24495268],
+        [0.14030856],
+        [0.98848253],
+        [0.21629004],
+        [0.77385217],
+        [0.4226013 ],
+        [0.5461467 ],
+        [0.06345365],
+        [0.9591146 ],
+        [0.9653101 ],
+        [0.9109111 ],
+        [0.59520805],
+        [0.12937342],
+        [0.94690955],
+        [0.31774738],
+        [0.07824167],
+        [0.4035803 ],
+        [0.970306  ],
+        [0.86459106],
+        [0.83906114],
+        [0.8583879 ],
+        [0.45989472],
+        [0.9608893 ],
+        [0.6475749 ],
+        [0.9643738 ],
+        [0.5300669 ],
+        [0.40387452],
+        [0.03868933],
+        [0.4975298 ],
+        [0.4583777 ],
+        [0.05485775],
+        [0.8855906 ],
+        [0.29030403],
+        [0.92123866],
+        [0.41690975],
+        [0.97260654],
+        [0.98183936],
+        [0.05801743],
+        [0.9789199 ],
+        [0.94818807],
+        [0.3699752 ],
+        [0.3638382 ],
+        [0.5479293 ],
+        [0.47763076],
+        [0.51313263],
+        [0.49031878],
+        [0.95143396],
+        [0.8830845 ],
+        [0.04611275],
+        [0.8867892 ],
+        [0.76889664],
+        [0.85455334],
+        [0.18544999],
+        [0.4523961 ],
+        [0.6139288 ],
+        [0.8853227 ],
+        [0.685312  ],
+        [0.01474617],
+        [0.7034919 ],
+        [0.79860747],
+        [0.57097834],
+        [0.72747326],
+        [0.08300006],
+        [0.9866009 ],
+        [0.9491896 ],
+        [0.4675123 ],
+        [0.49861518],
+        [0.8898536 ],
+        [0.67578405],
+        [0.8755042 ],
+        [0.28693882],
+        [0.7925204 ],
+        [0.32779872],
+        [0.99298096],
+        [0.15786973],
+        [0.05273386],
+        [0.07585184],
+        [0.84367484],
+        [0.11621627],
+        [0.3452456 ],
+        [0.08934698],
+        [0.4832032 ],
+        [0.5860667 ],
+        [0.6686725 ],
+        [0.05702977],
+        [0.21380268],
+        [0.8648583 ],
+        [0.7823888 ],
+        [0.24898165],
+        [0.28666323],
+        [0.20016862],
+        [0.2168708 ],
+        [0.21898386],
+        [0.4306856 ],
+        [0.82605165],
+        [0.36329412],
+        [0.94152397],
+        [0.97779167],
+        [0.7131194 ],
+        [0.81928974],
+        [0.03559082],
+        [0.22447224],
+        [0.63786954],
+        [0.95887583],
+        [0.22680953],
+        [0.03871967],
+        [0.22801438],
+        [0.9555246 ],
+        [0.99244696],
+        [0.42094892],
+        [0.33412814],
+        [0.97125894],
+        [0.84219325],
+        [0.9215936 ],
+        [0.11309428],
+        [0.9716536 ],
+        [0.32081524],
+        [0.6802617 ],
+        [0.33729896],
+        [0.02772723],
+        [0.8084843 ],
+        [0.6887507 ],
+        [0.841458  ],
+        [0.9155224 ],
+        [0.09881844],
+        [0.73725986],
+        [0.30792457],
+        [0.5606182 ],
+        [0.05556777],
+        [0.8924346 ],
+        [0.8027948 ],
+        [0.6102546 ],
+        [0.02506168],
+        [0.9593257 ],
+        [0.32803148],
+        [0.05519449],
+        [0.1393818 ],
+        [0.85458094],
+        [0.6028396 ],
+        [0.10856601],
+        [0.8255928 ],
+        [0.13584475],
+        [0.50551504],
+        [0.96753633],
+        [0.9437374 ],
+        [0.8593406 ],
+        [0.282129  ],
+        [0.93644136],
+        [0.60541344],
+        [0.908679  ],
+        [0.76774406],
+        [0.89691186],
+        [0.2703746 ],
+        [0.64322895],
+        [0.29612315],
+        [0.04659881],
+        [0.20838122],
+        [0.49536982],
+        [0.9574271 ],
+        [0.9164298 ],
+        [0.6172774 ],
+        [0.2583753 ],
+        [0.51643944],
+        [0.4519163 ],
+        [0.75248504],
+        [0.94678587],
+        [0.18314745],
+        [0.02212726],
+        [0.05176777],
+        [0.97237957],
+        [0.5470983 ],
+        [0.44097656],
+        [0.86453414],
+        [0.29728734],
+        [0.92869407],
+        [0.73852324],
+        [0.22985455],
+        [0.9173276 ],
+        [0.64710844],
+        [0.421796  ],
+        [0.4742776 ],
+        [0.5329712 ],
+        [0.6139735 ],
+        [0.14020257],
+        [0.8466091 ],
+        [0.10136232],
+        [0.9823159 ],
+        [0.78644043],
+        [0.24029979],
+        [0.44837937],
+        [0.95112103],
+        [0.98899335],
+        [0.72358245],
+        [0.9876894 ],
+        [0.13090147],
+        [0.80479366],
+        [0.18592311],
+        [0.10133642],
+        [0.18840505],
+        [0.05062044],
+        [0.9519586 ],
+        [0.8140401 ],
+        [0.04401746],
+        [0.26882783],
+        [0.95578164],
+        [0.30525184],
+        [0.06306392],
+        [0.78950936],
+        [0.0482501 ],
+        [0.48453936],
+        [0.48090762],
+        [0.66874796],
+        [0.9488091 ],
+        [0.86852896],
+        [0.4179146 ],
+        [0.9688493 ],
+        [0.02599564],
+        [0.98675174],
+        [0.41479954],
+        [0.5969038 ],
+        [0.74173814],
+        [0.91931564],
+        [0.01778276],
+        [0.9395381 ],
+        [0.9695743 ],
+        [0.7976663 ],
+        [0.9694414 ],
+        [0.9728497 ],
+        [0.5978612 ],
+        [0.88861656],
+        [0.6589707 ],
+        [0.6629037 ],
+        [0.24528511],
+        [0.5953964 ],
+        [0.9042165 ],
+        [0.9857699 ],
+        [0.30555132],
+        [0.94010955],
+        [0.18784209],
+        [0.2734823 ],
+        [0.50732434],
+        [0.936694  ],
+        [0.41610953],
+        [0.7398132 ],
+        [0.57886773],
+        [0.8904059 ],
+        [0.76505774],
+        [0.27815723],
+        [0.938038  ],
+        [0.16718833],
+        [0.85088605],
+        [0.20372394],
+        [0.8189768 ],
+        [0.12603728],
+        [0.62040645],
+        [0.47599888],
+        [0.41412124],
+        [0.96225524],
+        [0.32949308],
+        [0.77854615],
+        [0.50865686],
+        [0.98446643],
+        [0.6660308 ],
+        [0.30000117],
+        [0.31887043],
+        [0.34211856],
+        [0.66088057],
+        [0.98051924],
+        [0.38630512],
+        [0.31678852],
+        [0.22271015],
+        [0.3595858 ],
+        [0.04029208],
+        [0.29222274],
+        [0.7604949 ],
+        [0.9275784 ],
+        [0.56702435],
+        [0.02502951],
+        [0.12665989],
+        [0.8747921 ]], dtype=float32))</code></pre>
+</div>
+</div>
+<p><code>-</code> 뉴런의 개수와 비활성화함수로 그저 그냥 전미분 함수로 backpropaganda 랑 propaganda 실시 (역전파와 순전파) 로 나오는 그냥 값일 뿐</p>
+<blockquote class="blockquote">
+
+</blockquote>
+<blockquote class="blockquote">
+
+</blockquote>
+<blockquote class="blockquote">
+
+</blockquote>
+<blockquote class="blockquote">
+
+</blockquote>
+<section id="batch_size10-에-대해서-설명해줘" class="level3">
+<h3 class="anchored" data-anchor-id="batch_size10-에-대해서-설명해줘">batch_size=10 에 대해서 설명해줘</h3>
+<p><code>-</code> batch_size : 모델 학습 과정에서 한 번에 처리되는 데이터 샘플의 수를 의미합니다</p>
+<ul>
+<li>한 번의 반복(iteration)에서 10개의 샘플 처리 : 랜덤샘플인가요? 통상적으로 순차적인 데이터 #### batch_size = 데이터개수 : 전체값 예측 , batch_size * 데이터 개수 = 전체 데이터개수</li>
+</ul>
+<p><br> <br> <br> <br></p>
+<p><code>-</code> batch 를 쓰는 이유 : - batch 가 작으면 모든 것들로 적합하는게 아니라 일정부분만 사용하여 과적합을 피하는 방법이다. - 배치사이즈가 클수록 많은 데이터를 저장해두어야 하므로 용량 커야한다. - 배치사이즈가 작으면 학습은 촘촘하게 되어 시간이 오래 걸린다.</p>
+</section>
+<section id="최소제곱법" class="level1">
+<h1><code>-</code> 최소제곱법</h1>
+<ul>
+<li>회귀분석에서 쓰는 가장 MSE 가 적게 만드는 식
+<ul>
+<li>(BLUE 를 만족한다.) 수리통계학과 회귀분석을 이수하였다면 이유를 안다.</li>
+<li>수리통계학에서 MSE = VAR(T(X)) + 잔차(bias)(=0) 이 최소가 된다. # 여기서 T(X) 는 g(seta) 의 추정량이다.</li>
+<li>회귀분석에선 미분공식으로 모든 절편의 최소값을 찾는다.)</li>
+</ul></li>
+</ul>
+<p><br> - 최소제곱법의 계산 : 미분{전미분,편미분(로) 등}</p>
+<p><br> <br> <br> <br> <br></p>
+<blockquote class="blockquote">
+
+</blockquote>
+<section id="선형회귀" class="level2">
+<h2 class="anchored" data-anchor-id="선형회귀">선형회귀</h2>
+<ul>
+<li>회귀분석에서 기울기와 절편 등 중회귀모형에서 직접적으로 구하는 방법을 구한다.
+<ol type="1">
+<li>식을 구하는 방식을 간단히 단순선형모형에서 식으로 구하기</li>
+<li>식을 행렬의 표현을 이용하여 중회귀모형에서 직접 쉽게 구하기.(행렬은 증명을 쉽게 해준다는 장점이 존재)</li>
+</ol></li>
+</ul>
+<blockquote class="blockquote">
+
+</blockquote>
+</section>
+<section id="최소제곱법으로-그은-선에-대한-평가가-필요하다." class="level2">
+<h2 class="anchored" data-anchor-id="최소제곱법으로-그은-선에-대한-평가가-필요하다.">최소제곱법으로 그은 선에 대한 평가가 필요하다.</h2>
+<ul>
+<li>최소제곱법은 기울기와 절편이 최소이지만 이 모형이 제대로 우리의 데이터를 표현할 수 없다.
+<ul>
+<li>그 이유는 우리의 데이터가 전체의 데이터가 아니라 표본이기 때문이다. 그리고 오차가 존재하기 때문이다. 등 더 많은 문제가 있다. <code>-</code> 선에대한 평가의 지표를 만들자</li>
+</ul></li>
+<li>평균제곱오차 MSE 이것이 그의 지표로써 이용된다.</li>
+<li>MSE = $ _{i=1}^{n} (y_i - _i)^2 $ 인데 단순회귀모형에서는 $ n -&gt; n-2$ , 원점을 지나는 단순회귀모형은$ n -&gt; n-1 $이런식으로 자유도에 따라서 식이 바뀐다.</li>
+</ul>
+<section id="평가방법은-수리통계학에서의-작은-mse-찾는-방법과-회귀분석에서의-mse-계산으로-각종-지표로-유용한-직선인지-평가할-수-있다." class="level6">
+<h6 class="anchored" data-anchor-id="평가방법은-수리통계학에서의-작은-mse-찾는-방법과-회귀분석에서의-mse-계산으로-각종-지표로-유용한-직선인지-평가할-수-있다."><code>-</code> 평가방법은 수리통계학에서의 작은 MSE 찾는 방법과 회귀분석에서의 MSE 계산으로 각종 지표로 유용한 직선인지 평가할 수 있다.</h6>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/[1]tensorflow와 기초수학.html",
       "/posts/post-with-code/index.html",
       "/posts/welcome/index.html"
     ]
